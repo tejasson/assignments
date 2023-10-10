@@ -104,6 +104,7 @@ class String{
 				}
 				else{
 					cout<<"string is not palindrome"<<endl;
+					break;
 				}
 				len--;
 			}
