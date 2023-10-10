@@ -63,6 +63,7 @@ class polynomial{
 };				
 
 int main(){
+	
 	polynomial obj1;
 	obj1.input();
 	obj1.add_poly();
