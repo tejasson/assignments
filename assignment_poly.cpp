@@ -32,24 +32,42 @@ class polynomial{
 		}
 		
 		void add_poly(){
-			for(int i=0; i<maxsize1 && maxsize2; i++){
-				if(poly1[i].exp==poly2[i].exp){
-					sum_poly[x].coef=poly1[i].coef+poly2[i].coef;
-					sum_poly[x].exp=poly1[i].exp;
-					x++;
+			int i = 0, j = 0;
+			while (i < maxsize1 && j < maxsize2) {
+				if (poly1[i].exp == poly2[j].exp) {
+				    sum_poly[x].coef = poly1[i].coef + poly2[j].coef;
+				    sum_poly[x].exp = poly1[i].exp;
+				    i++;
+				    j++;
+				} else if (poly1[i].exp > poly2[j].exp) {
+				    sum_poly[x].coef = poly1[i].coef;
+				    sum_poly[x].exp = poly1[i].exp;
+				    i++;
+				} else {
+				    sum_poly[x].coef = poly2[j].coef;
+				    sum_poly[x].exp = poly2[j].exp;
+				    j++;
 				}
-				else if(poly1[i].exp>poly2[i].exp){
-					sum_poly[x].coef=poly1[i].coef;
-					sum_poly[x].exp=poly1[i].exp;
-					x++;
-				}
-				else if(poly1[i].exp<poly2[i].exp){
-					sum_poly[x].coef=poly2[i].coef;
-					sum_poly[x].exp=poly2[i].exp;
-					x++;
-				}
+				x++;
+			}
+
+			// Copy the remaining terms from poly1 (if any)
+			while (i < maxsize1) {
+				sum_poly[x].coef = poly1[i].coef;
+				sum_poly[x].exp = poly1[i].exp;
+				i++;
+				x++;
+			}
+
+			// Copy the remaining terms from poly2 (if any)
+			while (j < maxsize2) {
+				sum_poly[x].coef = poly2[j].coef;
+				sum_poly[x].exp = poly2[j].exp;
+				j++;
+				x++;
 			}
 		}
+
 		
 		void display(){
 			for(int i=0; i<=x; i++){
@@ -62,6 +80,7 @@ class polynomial{
 int main(){
 	polynomial obj1;
 	obj1.input();
+	obj1.add_poly();
 	obj1.display();
 	
 	return 0;
