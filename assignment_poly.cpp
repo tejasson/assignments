@@ -9,23 +9,23 @@ struct poly_term{
 class polynomial{
 	private:
 		int x=0;
-		int maxsize1;	int maxsize2;
+		int size1;	int size2;
 		poly_term poly1[100];	poly_term poly2[100];	poly_term sum_poly[100];
 		
 	public:
 		void input(){
 			cout<<endl<<"enter no. of terms you wanna insert in 1st polynomial: ";
-			cin>>maxsize1;
+			cin>>size1;
 			
-			for(int i=0; i<maxsize1; i++){
+			for(int i=0; i<size1; i++){
 				cout<<"enter coefficient and exponent respectively: \n";
 				cin>>poly1[i].coef>>poly1[i].exp;
 			}
 			
 			cout<<endl<<"enter no. of terms you wanna insert in 2nd polynomial: ";
-			cin>>maxsize2;
+			cin>>size2;
 			
-			for(int i=0; i<maxsize2; i++){
+			for(int i=0; i<size2; i++){
 				cout<<"enter coefficient and exponent respectively: \n";
 				cin>>poly2[i].coef>>poly2[i].exp;
 			}
@@ -33,7 +33,7 @@ class polynomial{
 		
 		void add_poly(){
 			int i = 0, j = 0;
-			while (i < maxsize1 && j < maxsize2) {
+			while (i < size1 && j < size2) {
 				if (poly1[i].exp == poly2[j].exp) {
 				    sum_poly[x].coef = poly1[i].coef + poly2[j].coef;
 				    sum_poly[x].exp = poly1[i].exp;
