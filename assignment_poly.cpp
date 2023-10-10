@@ -50,22 +50,7 @@ class polynomial{
 				}
 				x++;
 			}
-
-			// Copy the remaining terms from poly1 (if any)
-			while (i < maxsize1) {
-				sum_poly[x].coef = poly1[i].coef;
-				sum_poly[x].exp = poly1[i].exp;
-				i++;
-				x++;
-			}
-
-			// Copy the remaining terms from poly2 (if any)
-			while (j < maxsize2) {
-				sum_poly[x].coef = poly2[j].coef;
-				sum_poly[x].exp = poly2[j].exp;
-				j++;
-				x++;
-			}
+			
 		}
 
 		
