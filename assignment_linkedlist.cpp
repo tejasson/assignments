@@ -1,23 +1,23 @@
 #include<iostream>
 using namespace std;
 
-class node{
+class Node{
 	int data;
-	node *address;
+	Node *address;
 	
-	public:
-	void input_data(){
+	input_data(){
 		cout<<"enter the data: ";
 		cin>>data;
 		
 		this->data = data;
 		this->address = NULL;
 	}
-	
-	void display(){
-		cout<<data<<address<<endl;
-	}
 };
+
+class Link{
+	
+
+
 
 int main(){
 	node obj;
