@@ -25,11 +25,18 @@ class StudentList{
         StudentNode* head=NULL;
 		void insertion(){
             int choice;
-            cout<<"1.insertion at tail"<<endl;
-            cout<<"2.insertion at head"<<endl;
+            cout<<"1.insertion at head"<<endl;
+            cout<<"2.insertion at tail"<<endl;
             cin>>choice;
 
             if(choice==1){
+                StudentNode* newStudent = new StudentNode;
+                cout<<"Enter your name: "; cin>>newStudent->name;
+                cout<<"enter your Dob: "; cin>>newStudent->day;
+                newStudent->next=head;
+                head=newStudent;
+            }
+            else if(choice==2){
                 StudentNode* newStudent = new StudentNode;
                 cout<<"Enter your name: "; cin>>newStudent->name;
                 cout<<"enter your Dob: "; cin>>newStudent->day;
@@ -43,12 +50,6 @@ class StudentList{
                 }
                 head->next = newStudent;
             }
-            // else if(choice==2){
-            //     StudentNode* newStudent = new StudentNode();
-            //     cout<<"Enter your name your DOB and DOM repectively: \n";  
-			//     cin>>newStudent->name >>newStudent->day >>newStudent->month;
-            //     newStudent->next=NULL;
-            // }
         }
 
         void display(){
