@@ -13,22 +13,58 @@ system date) is birthday
 using namespace std;
 
 class StudentNode{
-	string name;
-	int day;
-	int month;
-	StudentNode* next;
-}
+	public:
+		string name;
+		int day;
+		int month;
+		StudentNode* next;
+};
 
 class StudentList{
-	StudentNode* head = nullptr;
-	
 	public:
-		void insert(){
-			StudentNode* newStudent = new StudentNode;
-			cout<<"Enter your name your DOB and DOM repectively: \n";  
-			cin>> newStudent->name>> newStudent->day>> newstudent->month;
-			newStudent->next = head;
-			head = newStudent;
-		}
-		void birthdayMssg(){
-			
+        StudentNode* head=NULL;
+		void insertion(){
+            int choice;
+            cout<<"1.insertion at tail"<<endl;
+            cout<<"2.insertion at head"<<endl;
+            cin>>choice;
+
+            if(choice==1){
+                StudentNode* newStudent = new StudentNode;
+                cout<<"Enter your name: "; cin>>newStudent->name;
+                cout<<"enter your Dob: "; cin>>newStudent->day;
+                newStudent->next=NULL;
+                if(head==NULL){
+                    head=newStudent;
+                    return;
+                }
+                while(head!=NULL){
+                    head = head->next;
+                }
+                head->next = newStudent;
+            }
+            // else if(choice==2){
+            //     StudentNode* newStudent = new StudentNode();
+            //     cout<<"Enter your name your DOB and DOM repectively: \n";  
+			//     cin>>newStudent->name >>newStudent->day >>newStudent->month;
+            //     newStudent->next=NULL;
+            // }
+        }
+
+        void display(){
+            StudentNode* temp = head;
+            while(temp!=NULL){
+                cout<<temp->name;
+                temp = temp->next;
+            }
+        }
+};
+
+int main(){
+    StudentList obj;
+    obj.insertion();
+    obj.insertion();
+    obj.display();
+
+    return 0;
+}
