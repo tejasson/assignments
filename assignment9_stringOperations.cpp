@@ -26,7 +26,8 @@ class StringOps{
 
     public:
         void userInput(){
-            cout<<"enter the string"; getline(cin,strOrg);
+            cout<<"enter the string: ";
+            getline(cin,strOrg);
         }
         void reverseStr(){
             for(char c:strOrg){
