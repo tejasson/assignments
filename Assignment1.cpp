@@ -1,4 +1,4 @@
-/* 
+ /* 
 Set operations: Write a menu driven C++ program to store sets for student's names
 participating in different events in Equinox such as Coding contest, 
 Project competition, Paper Presentation, MasterMind etc. 
@@ -12,13 +12,13 @@ or Mastermind
 #include<iostream>
 using namespace std;
 
-class Event{
+class Events{
 	private:
 		int a, flag;  int u=0; int v=0; int x=0; int y=0;
 		string stud_name[6], coding[6], project[6], presentation[6], mastermind[6];
 	
 	public:
-		void participants_detail(){
+		void participantsDetail(){
 			for(int i=0; i<6 ; i++){
 				cout<<endl<<"enter name: ";
 				cin>>stud_name[i]; 
@@ -123,8 +123,9 @@ class Event{
 };
 
 int main(){
-	Event obj;
-	obj.participants_detail();
+	Events
+ obj;
+	obj.participantsDetail();
 
 	int ch;
 	cout<<"\nenter your choice: ";
