@@ -1,7 +1,8 @@
 // Expression conversion: Write a menu driven C++ program for expression
 // conversion and evaluation
-// 1. infix to prefix
-// 2. infix to postfix
+// 1. infix operations
+// 2. postfix operations
+// 3. prefix operations
 
 #include <iostream>
 #include <stack>
