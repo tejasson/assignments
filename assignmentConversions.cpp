@@ -10,7 +10,7 @@ using namespace std;
 
 class Conversion
 {
-    string a, b, c, expression, prefix, postfix, resultVar, expVar;
+    string a, b, c, o, expression, prefix, postfix, resultVar, expTemp;
     stack<string> resultStack;
 
 public:
@@ -20,58 +20,94 @@ public:
         cin >> expression;
         cout<<endl;
     }
-    // void infixToPrefix()
-    // {
-    //     for (int i = 0; i < expression.length(); i++)
-    //     {
-    //         if (isdigit(expression[i]))
-    //         {
-    //             resultStack.push(expression[i]);
-    //         }
-    //         else
-    //         {
-    //             a = resultStack.top();
-    //             resultStack.pop();
-    //             b = resultStack.top();
-    //             resultStack.pop();
-    //         }
-    //     }
-    // }
-    // void infixToPostfix()
-    // {
-    //     for (int i = 0; i < expression.length(); i++)
-    //     {
-    //         if (expression[i] >= 'A' && expression[i] <= 'Z')
-    //         {
-    //             postfix += expression[i];
-    //         }
-    //         else if (expression[i] != '(' && expression[i] != ')')
-    //         {
-    //             resultStack.push(expression[i]);
-    //         }
+    
+    void infixOperations()
+    {
+        stack<string> operatorStack;
+        //infix to prefix operation;
+        cout<<"infix to prefix: ";
+        for (int i = expression.length()-1; i >= 0; i--)
+        {
+            if (expression[i] != '(' && expression[i] != ')')
+            {
+                if (expression[i] >= 'a' && expression[i] <= 'z')
+                {
+                    expTemp = expression[i];
+                    resultStack.push(expTemp);
+                    // cout<<expression[i]<<"pushed1";
+                }
+                else if (expression[i] == '*' || expression[i] <= '/' || expression[i] <= '+' || expression[i] <= '-')
+                {
+                    expTemp = expression[i];
+                    operatorStack.push(expTemp);
+                    // cout<<expression[i]<<"pushed2";
+                }
+                
+            }
+            else if (expression[i] == '(')
+            {
+                a = resultStack.top();
+                resultStack.pop();
+                b = resultStack.top();
+                resultStack.pop();
+                o = operatorStack.top();
+                operatorStack.pop();
 
-    //         if (expression[i] == ')')
-    //         {
-    //             postfix += resultStack.top();
-    //             resultStack.pop();
-    //         }
-    //     }
-    //     cout << endl
-    //          << "output: ";
-    //     for (int i = 0; i < postfix.length(); i++)
-    //     {
-    //         cout << postfix[i];
-    //     }
-    // }
+                c = o+a+b;
+                resultStack.push(c);
+            }
+        }
+        resultVar = resultStack.top();
+        resultStack.pop();
+        cout<<resultVar<<endl;
+
+        //infix to postfix operation;
+        cout<<"infix to postfix: ";
+        for (int i = 0; i < expression.length(); i++)
+        {
+            if (expression[i] != '(' && expression[i] != ')')
+            {
+                if (expression[i] >= 'a' && expression[i] <= 'z')
+                {
+                    expTemp = expression[i];
+                    resultStack.push(expTemp);
+                    // cout<<expression[i]<<"pushed1";
+                }
+                else if (expression[i] == '*' || expression[i] <= '/' || expression[i] <= '+' || expression[i] <= '-')
+                {
+                    expTemp = expression[i];
+                    operatorStack.push(expTemp);
+                    // cout<<expression[i]<<"pushed2";
+                }
+                
+            }
+            else if (expression[i] == ')')
+            {
+                a = resultStack.top();
+                resultStack.pop();
+                b = resultStack.top();
+                resultStack.pop();
+                o = operatorStack.top();
+                operatorStack.pop();
+
+                c = b+a+o;
+                resultStack.push(c);
+            }
+        }
+        resultVar = resultStack.top();
+        resultStack.pop();
+        cout<<resultVar<<endl;
+    }
+
     void postfixOperations()
     {
         //postfix to infix operation
         cout<<"Postfix to Infix: ";
-        for(int i=0; i<expression.length(); i++){
-            if (expression[i]>='a'&&expression[i]<='z')
+        for(int i = 0; i < expression.length(); i++){
+            if (expression[i] >= 'a' && expression[i] <= 'z')
             {
-                expVar = expression[i];
-                resultStack.push(expVar);
+                expTemp = expression[i];
+                resultStack.push(expTemp);
             }
             else
             {   
@@ -89,11 +125,11 @@ public:
 
         //postfix to prefix operation
         cout<<endl<<"postfix to Prefix: ";
-        for(int i=0; i<expression.length(); i++){
-            if (expression[i]>='a'&&expression[i]<='z')
+        for(int i = 0; i < expression.length(); i++){
+            if (expression[i] >= 'a' && expression[i] <= 'z')
             {
-                expVar = expression[i];
-                resultStack.push(expVar);
+                expTemp = expression[i];
+                resultStack.push(expTemp);
             }
             else
             {   
@@ -109,16 +145,17 @@ public:
         resultStack.pop();
         cout<<resultVar<<endl;
     }
+
     void prefixOperations()
     {
         //prefix to infix operation
         cout<<"Prefix to Infix: ";
-        for (int i = expression.length()-1; i>= 0; i--)
+        for (int i = expression.length()-1; i >= 0; i--)
         {
-            if (expression[i]>='a'&&expression[i]<='z')
+            if (expression[i] >= 'a' && expression[i] <= 'z')
             {
-                expVar = expression[i];
-                resultStack.push(expVar);
+                expTemp = expression[i];
+                resultStack.push(expTemp);
             }
             else
             {
@@ -138,10 +175,10 @@ public:
         cout<<"Prefix to Infix: ";
         for (int i = expression.length()-1; i >= 0; i--)
         {
-            if (expression[i]>='a'&&expression[i]<='z')
+            if (expression[i] >= 'a' && expression[i] <= 'z')
             {
-                expVar = expression[i];
-                resultStack.push(expVar);
+                expTemp = expression[i];
+                resultStack.push(expTemp);
             }
             else
             {
@@ -158,6 +195,7 @@ public:
         cout<<resultVar<<endl;
     }
 };
+
 int main()
 {
     int choice;
@@ -168,17 +206,19 @@ int main()
          << "3. prefix operations" <<endl
          << "your choice: ";
     cin >> choice; cout<<endl;
-    if (choice == 1)
+    switch (choice)
     {
-        //obj.infixToPrefix();
-    }
-    else if (choice == 2)
-    {
+        case 1:
+        obj.infixOperations();
+        break;
+
+        case 2:
         obj.postfixOperations();
-    }
-    else if (choice == 3)
-    {
+        break;
+
+        case 3:
         obj.prefixOperations();
+        break;
     }
 
     return 0;
