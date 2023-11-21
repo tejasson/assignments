@@ -113,7 +113,49 @@ public:
     {
         //prefix to infix operation
         cout<<"Prefix to Infix: ";
-        
+        for (int i = expression.length()-1; i>= 0; i--)
+        {
+            if (expression[i]>='a'&&expression[i]<='z')
+            {
+                expVar = expression[i];
+                resultStack.push(expVar);
+            }
+            else
+            {
+                a = resultStack.top();
+                resultStack.pop();
+                b = resultStack.top();
+                resultStack.pop();
+                c = "("+a+expression[i]+b+")";
+                resultStack.push(c);
+            }
+        }
+        resultVar = resultStack.top();
+        resultStack.pop();
+        cout<<resultVar<<endl;
+
+        //prefix to postfix operation
+        cout<<"Prefix to Infix: ";
+        for (int i = expression.length()-1; i >= 0; i--)
+        {
+            if (expression[i]>='a'&&expression[i]<='z')
+            {
+                expVar = expression[i];
+                resultStack.push(expVar);
+            }
+            else
+            {
+                a = resultStack.top();
+                resultStack.pop();
+                b = resultStack.top();
+                resultStack.pop();
+                c = a+b+expression[i];
+                resultStack.push(c);
+            }
+        }
+        resultVar = resultStack.top();
+        resultStack.pop();
+        cout<<resultVar<<endl;
     }
 };
 int main()
@@ -133,6 +175,10 @@ int main()
     else if (choice == 2)
     {
         obj.postfixOperations();
+    }
+    else if (choice == 3)
+    {
+        obj.prefixOperations();
     }
 
     return 0;
