@@ -23,14 +23,14 @@ class String{
         bool b;
 	
 	public:
-		void input(){
+		void userInput(){
 			cout<<"enter string: ";
 			getline(cin,str);
 		}
 
 // 1. To determine the frequency of occurrence of a particular character
 // in the string.		
-		void char_freq(){
+		void charFreq(){
 			cout<<"character you wanna check kr: ";
 			cin>>character;
 			for(int i=0; i<str.size(); i++){
@@ -43,7 +43,7 @@ class String{
 
 // 2. Extract a new string from original string by accepting starting
 // position and length
-		void extract_str(){
+		void extractStr(){
 			int c;
 			cout<<"Enter the starting postion: ";
 			cin>>pos;
@@ -60,7 +60,7 @@ class String{
 
 // 3. To accept any character and return the string with by removing all
 // occurrences of a character accepted
-		void char_remove(){
+		void charRemove(){
 			cout<<"enter the character you want to remove: ";
 			cin>>removed_char;
 			for(int i=0; i<str.size(); i++){
@@ -73,26 +73,18 @@ class String{
 
 // 4. To make an in-place replacement of a substring w of a string by the
 // string x. Note that w may not be of same size that of x
-        void str_replace(){
-            string w, x;
-            cout<<"enter the sub string you want to replace: "<<endl;
-            cin>>w;
+        void strReplace(){
+            string w1, w2, x;
+			int posStart, posEnd;
+			
+            cout<<"enter the starting and ending position of sub string you want to replace: "<<endl;
+            cin>>posStart>>posEnd;
+			w1 = str.substr(0,posStart);
+			w2 = str.substr(posEnd+1,str.length()-1);
             cout<<"\nenter the replacement string: "<<endl;
             cin>>x;
 
-            int q=0; int pos; bool boolean;
-			for(int i=0; i<sizeof(str); i++){
-				if(w[q]==str[i]){
-					pos = i;
-				}
-			}
-			for(int k=0; k<sizeof(x); k++){
-				str[pos]=x[k];
-				pos++;
-			}
-			for(int i=0; i<sizeof(str); i++){
-				cout<<str[i];
-			}
+			cout<<"the resulted string is: "<<w1 + x + w2;
         }      
 
 // 5. To check whether given string is palindrome or not
@@ -116,11 +108,11 @@ class String{
 
 int main(){
 	String obj;
-	obj.input();
-	// obj.char_freq();
-	// obj.extract_str();
-	// obj.char_remove();
-	obj.str_replace();
-	//obj.palindrome();
+	obj.userInput();
+	obj.charFreq();
+	obj.extractStr();
+	obj.charRemove();
+	obj.strReplace();
+	obj.palindrome();
 	return 0;
 }
