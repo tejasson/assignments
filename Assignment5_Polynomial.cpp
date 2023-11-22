@@ -1,3 +1,7 @@
+// Polynomial operations: Write a menu driven C++ program with class for single variable polynomial and write 
+// functions to perform following polynomial operations using arrays 
+// 1. Read polynomial 2. Display polynomial 3. Add two polynomials
+
 #include<iostream>
 using namespace std;
 
