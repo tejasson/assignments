@@ -21,8 +21,11 @@ class PizzaParty{
             }
         }
         void pizzaServe(){
-            if (pizzaId == 0||front > pizzaId){
+            if (front > pizzaId){
                 cout<<"All orders have been served 😁"<<endl;
+            }
+            else if (pizzaId == 0){
+                cout<<"Order book is empty press 1. and order your yummy😋 pizza"<<endl;
             }
             else {
                 cout<<endl<<"Order no. "<<front+1<<" is ready...😋"<<endl;
@@ -30,9 +33,14 @@ class PizzaParty{
             }
         }
         void display(){
-            cout<<"pending orders are: "<<endl;
-            for (int i = front; i <= pizzaId; i++){
-                cout<<pizzaQueue[i]<<",    ";
+            if (pizzaId == 0 || front > pizzaId){
+                cout<<"Order book is empty press 1. and order your yummy😋 pizza"<<endl;
+            }
+            else{
+                cout<<"pending orders are: "<<endl;
+                for (int i = front; i < pizzaId; i++){
+                    cout<<pizzaQueue[i]<<",    ";
+                }
             }
         }
 };
@@ -66,4 +74,5 @@ int main(){
             break;
         }
     }
+    cout<<endl<<"visit again 😁"<<endl;
 }
