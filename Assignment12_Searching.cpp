@@ -14,8 +14,8 @@ using namespace std;
 class Searching
 {
     int key;
-    int studRollLinear[100];
-    int studRollBinary[100];
+    int studRollLinear[];
+    int studRollBinary[];
 
     public:
         void linearStudInput()
