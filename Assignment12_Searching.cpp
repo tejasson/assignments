@@ -13,85 +13,85 @@ using namespace std;
 
 class Searching
 {
+    int n;
     int key;
-    int studRollLinear[];
-    int studRollBinary[];
+    int studRoll[];
 
     public:
         void linearStudInput()
         {
-            for (int i = 0; i < 5; i++)
+            cout<<"enter the no of student you want to register: "; cin>>n;
+            for (int i = 0; i < n; i++)
             {
                 cout<<"\nEnter the present roll no: "<<i<<" :";
-                cin>>studRollLinear[i];
+                cin>>studRoll[i];
             }
             cout<<"student registered successfully";
         }
 
         void linearSearch()
         {
-            cout<<"Enter the roll no of the student you want to check: ";
+            cout<<"Enter the roll no of the student you want to check: "<<endl;
             cin>>key;
 
             for (int i = 0; i < 5; i++)
             {
-                if (key == studRollLinear[i])
+                if (key == studRoll[i])
                 {
-                    cout<<i<<" has attended the Leacture";
-                }
-                else
-                {
-                    cout<<"Roll no"<<studRollLinear[i]<<" was absent";
+                    cout<<"Student has attended the Leacture, and is at "<<i<<"th index"<<endl;
+                    return;
                 }
             }
+            cout<<"Roll no"<<key<<" was absent"<<endl;
         }
 
         void binaryStudInput()
         {
-            for (int i = 0; i < 9; i++)
+            cout<<endl<<"*************************************************"<<endl;
+            cout<<"enter no of student you want to register : "; cin>> n;
+            for (int i = 0; i < n; i++)
             {
                 cout<<"\nEnter the student roll no: ";
-                cin>>studRollBinary[i];
+                cin>>studRoll[i];
             }
-            cout<<"Student registered successfully.";
+            cout<<"Student registered successfully."<<endl;
+
+            cout<< sizeof(studRoll);
         }
 
         void binarySearch()
         {
-            int mid = sizeof(studRollBinary)/2;
-            int high; int low;
+            int high = n-1; int low = 0;
 
             cout<<"Enter the roll no of the student you want to check: ";
             cin>>key;
 
-            while (true)
+            while (high >= low)
             {
-                if (studRollBinary[mid] == key)
+                int mid = (high + low)/2;
+                if (studRoll[mid] == key)
                 {
-                    cout<<"Student no "<<studRollBinary[mid]<<" is present at "<<mid;
-                    break;
+                    cout<<"Student no "<<studRoll[mid]<<" is present at "<<mid<<endl;
+                    return;
                 }
-                else if (studRollBinary[mid] > key)
+                else if (studRoll[mid] > key)
                 {
-                    mid = mid - 1;
+                    high = mid -1;
                 }
-                else if (studRollBinary[mid] < key)
+                else if (studRoll[mid] < key)
                 {
-                    mid = mid + 1;
-                }
-                else
-                {
-                    continue;
+                    low = mid + 1;
                 }
             }
+            cout<<"Student "<<key<<" was absent"<<endl;
         }    
 };
 
 int main()
 {
     Searching obj;
-    obj.linearStudInput();
-    obj.linearSearch();
+    // obj.linearStudInput();
+    // obj.linearSearch();
     obj.binaryStudInput();
     obj.binarySearch();
 
