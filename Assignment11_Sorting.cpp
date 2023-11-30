@@ -17,8 +17,8 @@ using namespace std;
 
 class Sorting
 {
-    int temp;
-    int arr[50] = {10,2,1,5,4};
+    int temp; int min; int minIndex;
+    int arr[10] = {10,2,1,5,4};
 
     public:
         void bubbleSort()
@@ -60,13 +60,42 @@ class Sorting
             }
             cout<<endl;
         }
+
+        void selectionSort()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                min = arr[i];
+                for (int j = i; j < 5; j++)
+                {
+                    if (min > arr[j])
+                    {
+                        min = arr[j];
+                        minIndex = j;
+                    }
+                }
+                if (min != arr[i])
+                {
+                    temp = arr[i];
+                    arr[i] = arr[minIndex];
+                    arr[minIndex] = temp;
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                cout<<arr[i]<<",";
+            }
+            cout<<endl;
+        }
 };
 
 int main()
 {
     Sorting obj;
+    
     obj.bubbleSort();
     obj.insertSort();
+    obj.selectionSort();
 
     return 0;
 }
