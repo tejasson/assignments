@@ -34,7 +34,7 @@ class Sorting
                         arr[j] = temp;
                     }
                 }
-                cout<<arr[i]<<",";
+                cout<<arr[I]<<" ";
             }
             cout<<endl;
         }
@@ -56,7 +56,7 @@ class Sorting
             }
             for (int i = 0; i < 5; i++)
             {
-                cout<<arr[i]<<",";
+                cout<<arr[i]<<" ";
             }
             cout<<endl;
         }
@@ -83,7 +83,7 @@ class Sorting
             }
             for (int i = 0; i < 5; i++)
             {
-                cout<<arr[i]<<",";
+                cout<<arr[i]<<" ";
             }
             cout<<endl;
         }
